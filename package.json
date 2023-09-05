@@ -1,11 +1,14 @@
 {
-  "name": "app",
+  "homepage": "https://eduardolimadev01.github.io.git",
+  "name": "eduardolimadev01.github.io",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.2.0",
