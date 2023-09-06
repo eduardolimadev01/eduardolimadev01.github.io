@@ -50,7 +50,7 @@ export const Projects = () => {
     return listProjects.length ?
         <section
             className="projects mb-32"
-            id="projects"
+            id="projetos"
         >
             <h3 className="title-section">Projetos</h3>
             <ul className="grid grid-cols-1 md:grid-cols-3 gap-1 w-full">
