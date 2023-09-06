@@ -2,7 +2,9 @@ export {
     AiFillGithub,
     AiFillLinkedin,
     AiOutlineAudit,
-    AiOutlineCheck
+    AiOutlineCheck,
+    AiOutlineWhatsApp,
+    AiOutlineMail
 } from "react-icons/ai"
 export {
     GrContactInfo
