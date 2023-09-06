@@ -4,5 +4,6 @@
      - React 
      - TypeScript
      - Vite
+     - supabase
      - tailwindcss
 
