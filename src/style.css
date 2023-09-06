@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 .title-section {
-    @apply text-3xl font-bold pb-2 border-b-4 my-4
+    @apply text-3xl font-bold pb-2 border-b-4 my-4 capitalize
 }
 

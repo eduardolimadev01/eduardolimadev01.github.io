@@ -1,3 +1,5 @@
+import * as utils from "../utils"
+
 import {
     useState,
     useEffect
@@ -5,8 +7,11 @@ import {
 
 type project = {
     title: string
+    subtitle: string
+    stack: Array<string>
     description: string
     repository: string
+    demo: string
     img: string
     created_at: string
 }
@@ -16,8 +21,11 @@ export const Projects = () => {
 
     const initStateProject = {
         title: "",
+        subtitle: "",
+        stack: [],
         description: "",
         repository: "",
+        demo: "",
         img: "",
         created_at: "",
     }
@@ -27,7 +35,13 @@ export const Projects = () => {
         const l = [
             {
                 repository: "https://github.com/eduardolimadev01/eduardolimadev01.github.io",
-                title: "test", description: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.", img: "test", created_at: "2023-09-06T15:36:46.003Z",
+                subtitle: "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit.",
+                stack: ["foobar", "barfoo"],
+                demo: "https://github.com/eduardolimadev01/eduardolimadev01.github.io",
+                title: "test",
+                description: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+                img: "/vite.svg",
+                created_at: "2023-09-06T15:36:46.003Z",
             },
         ]
         setListProjects(l)
@@ -46,9 +60,17 @@ export const Projects = () => {
                             onClick={() => setProjectSelected(project)}
                             key={project.title}
                         >
-                            <img src="/vite.svg" />
-                            <div className="">
-                                {project.title}
+                            <img
+                                src="/vite.svg"
+                                className="w-48 h-48"
+                            />
+                            <div className="flex flex-col gap-2 p-1">
+                                <h3>
+                                    {project.subtitle}
+                                </h3>
+                                <ul className="flex gap-1">
+                                    {project.stack.map(item => <li key={item}>{item}</li>)}
+                                </ul>
                             </div>
                         </li>
                     )
@@ -70,12 +92,36 @@ export const Projects = () => {
                                         >X</div>
                                     </div>
 
-                                    <div className="flex flex-col justify-between p-2">
+                                    <div className="flex flex-col gap-4 justify-between p-2">
                                         <main>
-                                            {projectSelected.title}
+                                            <div className="">
+                                                <img src={projectSelected.img} alt={projectSelected.title} />
+                                            </div>
+                                            {projectSelected.description}
                                         </main>
                                         <footer className="flex w-full justify-end gap-2">
-                                            footer
+                                            {projectSelected.repository
+                                                ? <a
+                                                    className="underline flex gap-1 items-center border-2 p-1"
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    href={projectSelected.repository}
+                                                >
+                                                    Código <utils.BiLinkExternal />
+                                                </a>
+                                                : null
+                                            }
+                                            {projectSelected.demo
+                                                ? <a
+                                                    className="underline flex gap-1 items-center border-2 p-1"
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    href={projectSelected.demo}
+                                                >
+                                                    Demonstração <utils.BiLinkExternal />
+                                                </a>
+                                                : null
+                                            }
                                         </footer>
                                     </div>
                                 </div>

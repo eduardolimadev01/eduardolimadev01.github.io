@@ -15,7 +15,7 @@ export const Hero = () => {
         {
             title: "CV",
             href: "/cv",
-            icon: <utils.GrContactInfo />,
+            icon: <utils.AiOutlineAudit />,
         },
     ]
 
