@@ -12,7 +12,7 @@ export const Contact = () => {
         >
             contato
         </h3>
-        <section className="grid gap-2 grid-cols-1 md:grid-cols-2">
+        <section className="grid gap-2 grid-cols-1 md:grid-cols-2 mb-32">
             <ul className="flex flex-col gap-2">
                 <li className="rounded flex gap-2 items-center bg-primary p-1 text-white">
                     <span className="p-2 bg-green-300 rounded-full">
