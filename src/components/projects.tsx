@@ -1,5 +1,7 @@
 import * as utils from "../utils"
 
+import supabase from "../../supabase"
+
 import {
     useState,
     useEffect
@@ -21,30 +23,40 @@ export const Projects = () => {
 
     const initStateProject = {
         title: "",
+        created_at: "",
         subtitle: "",
         stack: [],
         description: "",
         repository: "",
         demo: "",
         img: "",
-        created_at: "",
     }
     const [projectSelected, setProjectSelected] = useState<project>(initStateProject)
 
+    const getProjects = async () => {
+        const { data, error } = await supabase()
+            .from("projects")
+            .select()
+        if (error) console.log(error)
+        console.log(error)
+        console.log(data)
+        if (data) setListProjects(data || [])
+    }
     useEffect(() => {
-        const l = [
-            {
-                repository: "https://github.com/eduardolimadev01/eduardolimadev01.github.io",
-                subtitle: "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit.",
-                stack: ["foobar", "barfoo"],
-                demo: "https://github.com/eduardolimadev01/eduardolimadev01.github.io",
-                title: "test",
-                description: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-                img: "/vite.svg",
-                created_at: "2023-09-06T15:36:46.003Z",
-            },
-        ]
-        setListProjects(l)
+        getProjects()
+        // const l = [
+        //     {
+        //         repository: "https://github.com/eduardolimadev01/eduardolimadev01.github.io",
+        //         subtitle: "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit.",
+        //         stack: ["foobar", "barfoo"],
+        //         demo: "https://github.com/eduardolimadev01/eduardolimadev01.github.io",
+        //         title: "test",
+        //         description: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+        //         img: "/vite.svg",
+        //         created_at: "2023-09-06T15:36:46.003Z",
+        //     },
+        // ]
+        // setListProjects(l)
     }, [])
 
     return listProjects.length ?
@@ -57,7 +69,7 @@ export const Projects = () => {
                 {
                     listProjects.map((project) =>
                         <li
-                            className="flex flex-col gap-1 justify-center items-center p-1 rounted border-2 border-gray-300 w-52 cursor-pointer hover:bg-gray-200"
+                            className="flex flex-col gap-1 justify-center items-center p-1 rounted border-2 border-gray-300 w-full md:w-52 cursor-pointer hover:bg-gray-200"
                             onClick={() => setProjectSelected(project)}
                             key={project.title}
                         >
