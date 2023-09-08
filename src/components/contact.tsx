@@ -82,7 +82,25 @@ export const Contact = () => {
                             Eduardo Lima
                         </h2>
                         <span
-                            className="text-black bg-white p-1 rounded-lg hidden w-fit "
+                            className="text-black bg-white p-1 rounded-lg w-fit"
+                        >
+                            <utils.BiLinkExternal />
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        className="rounded flex gap-2 items-center bg-primary p-1 text-white group cursor-pointer"
+                        href="/cv.html"
+                    >
+                        <span className="p-2 bg-slate-500 rounded-full">
+                            <utils.AiOutlineAudit />
+                        </span>
+                        <h2 className="text-lg group-hover:underline">
+                            Currículo
+                        </h2>
+                        <span
+                            className="text-black bg-white p-1 rounded-lg w-fit"
                         >
                             <utils.BiLinkExternal />
                         </span>
@@ -92,7 +110,7 @@ export const Contact = () => {
             <div className="hidden md:flex h-80 w-1 bg-primary rounded-lg"></div>
             <ul className="flex flex-col gap-2 w-full">
                 <li className="flex flex-col gap-2">
-                    <label>Nome</label>
+                    <label className="font-bold">Nome:</label>
                     <input
                         value={name}
                         type="text"
@@ -101,7 +119,7 @@ export const Contact = () => {
                     />
                 </li>
                 <li className="flex flex-col gap-2">
-                    <label>Email</label>
+                    <label className="font-bold">Email:</label>
                     <input
                         value={email}
                         type="text"
@@ -110,7 +128,7 @@ export const Contact = () => {
                     />
                 </li>
                 <li className="flex flex-col gap-2">
-                    <label>Mensagem</label>
+                    <label className="font-bold">Mensagem:</label>
                     <textarea
                         value={msg}
                         className="border-2 border-gray-300 rounded p-1"

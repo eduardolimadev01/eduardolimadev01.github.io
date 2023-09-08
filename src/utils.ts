@@ -4,7 +4,9 @@ export {
     AiOutlineAudit,
     AiOutlineCheck,
     AiOutlineWhatsApp,
-    AiOutlineMail
+    AiOutlineMail,
+    AiOutlineClose,
+    AiOutlineMenu
 } from "react-icons/ai"
 export {
     GrContactInfo
