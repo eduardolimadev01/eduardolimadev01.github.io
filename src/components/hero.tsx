@@ -9,13 +9,8 @@ export const Hero = () => {
         },
         {
             title: "Linkedin",
-            href: "https://www.linkedin.com/in/eduardolimadev01/",
+            href: "https://www.linkedin.com/in/eduardo-ldev",
             icon: <utils.AiFillLinkedin />,
-        },
-        {
-            title: "CV",
-            href: "/cv",
-            icon: <utils.AiOutlineAudit />,
         },
     ]
 
@@ -25,20 +20,24 @@ export const Hero = () => {
     >
         <h2 className="text-4xl">Desenvolvedor Web Front-End</h2>
         <ul className="flex gap-1 text-white text-2xl">
-            {
-                listSocialLinks.map((link) => <li key={link.title}>
-                    <a
-                        target="_blank"
-                        className="flex rounded-lg border-2 border-gray-300 p-1 bg-primary hover:opacity-75"
-                        rel="noreferrer"
-                        href={link.href}
-                    >
-                        {link.icon}
-                    </a>
-                </li>
-                )
-            }
+            {listSocialLinks.map((link) => <li key={link.title}>
+                <a
+                    target="_blank"
+                    className="flex rounded-lg border-2 border-gray-300 p-1 bg-primary hover:opacity-75"
+                    rel="noreferrer"
+                    href={link.href}
+                >
+                    {link.icon}
+                </a>
+            </li>)}
+            <li>
+                <a
+                    className="flex rounded-lg border-2 border-gray-300 p-1 bg-primary hover:opacity-75"
+                    href="/cv.html">
+                    <utils.AiOutlineAudit />
+                </a>
+            </li>
         </ul>
-    </section>
+    </section >
 }
 

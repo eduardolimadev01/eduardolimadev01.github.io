@@ -1,9 +1,9 @@
 # Portfolio desenvolvedor front-end
 
-# Teqnologia
-     - React 
-     - TypeScript
-     - Vite
-     - supabase
-     - tailwindcss
+# Tecnologia
+    - React 
+    - TypeScript
+    - Vite
+    - Supabase
+    - Tailwindcss
 
