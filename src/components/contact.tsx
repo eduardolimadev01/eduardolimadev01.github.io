@@ -1,5 +1,7 @@
 import { useState } from "react"
 
+import { Button } from "./Button"
+
 import * as utils from "../utils"
 export const Contact = () => {
     const [name, setName] = useState('')
@@ -14,28 +16,79 @@ export const Contact = () => {
             contato
         </h3>
         <section
-            className="grid gap-2 grid-cols-1 md:grid-cols-2 mb-32 w-full"
+            className="flex flex-col md:flex-row gap-10 grid-cols-1 justify-between mb-32 w-full"
         >
             <ul className="flex flex-col gap-2 w-full">
-                <li className="rounded flex gap-2 items-center bg-primary p-1 text-white">
-                    <span className="p-2 bg-green-300 rounded-full">
-                        <utils.AiOutlineWhatsApp />
-                    </span>
-                    +55 (81) 99290-3150
+                <li
+                    className="rounded flex flex-col gap-2 items-start bg-primary p-1 text-white group"
+                >
+                    <div className="flex gap-1 items-center">
+                        <span className="p-2 bg-green-300 rounded-full">
+                            <utils.AiOutlineWhatsApp />
+                        </span>
+                        <h2 className="text-2xl md:text-xl">
+                            +55 (81) 99290-3150
+                        </h2>
+                    </div>
+                    <div className="flex gap-1 items-center">
+                        <Button
+                            onClick={() => {
+                                navigator.clipboard.writeText("81992903150")
+                            }}
+                            style="bg-white text-primary rounded-lg text-sm hover:underline cursor-pointer"
+                        >
+                            copia número
+                        </Button>
+                        <Button
+                            style="bg-white text-primary rounded-lg text-sm hover:underline cursor-pointer"
+                        >
+                            <a
+                                target="_blank"
+                                rel="noreferrer nofollow"
+                                href="https://api.whatsapp.com/send?phone=5581992903150"
+                            >
+                                WhatsApp
+                            </a>
+                        </Button>
+                    </div>
                 </li>
-                <li className="rounded flex gap-2 items-center bg-primary p-1 text-white">
+                <li
+                    className="rounded group flex flex-wrap gap-2 items-center bg-primary p-1 text-white hover:underline cursor-pointer">
                     <span className="p-2 bg-blue-300 rounded-full">
                         <utils.AiOutlineMail />
                     </span>
-                    eduardolimadesenvolvedor@gmail.com
+                    <h2 className="text-xl">
+                        eduardolimadesenvolvedor@gmail.com
+                    </h2>
+                    <Button
+                        onClick={() => {
+                            navigator.clipboard.writeText("eduardolimadesenvolvedor@gmail.com")
+                        }}
+                        style="bg-white text-primary rounded-lg text-sm hover:underline cursor-pointer"
+                    >
+                        copia email
+                    </Button>
                 </li>
-                <li className="rounded flex gap-2 items-center bg-primary p-1 text-white">
-                    <span className="p-2 bg-sky-500 rounded-full">
-                        <utils.AiFillLinkedin />
-                    </span>
-                    eduardo lima
+                <li>
+                    <a
+                        target="_blank"
+                        rel="noreferrer nofollow"
+                        className="rounded flex gap-2 items-center bg-primary p-1 text-white group cursor-pointer"
+                        href="https://www.linkedin.com/in/eduardo-ldev"
+                    >
+                        <span className="p-2 bg-sky-500 rounded-full">
+                            <utils.AiFillLinkedin />
+                        </span>
+                        Eduardo Lima
+                        <span
+                            className="animate-pulse text-black bg-white p-1 rounded-lg text-sm hidden w-fit group-hover:flex"
+                        >
+                            <utils.BiLinkExternal />
+                        </span>
+                    </a>
                 </li>
             </ul>
+            <div className="hidden md:flex h-80 w-1 bg-primary rounded-lg"></div>
             <ul className="flex flex-col gap-2 w-full">
                 <li className="flex flex-col gap-2">
                     <label>Nome</label>
