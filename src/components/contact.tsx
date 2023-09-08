@@ -1,13 +1,46 @@
 import { useState } from "react"
 import { Button } from "./Button"
 
+import emailjs from "@emailjs/browser"
+
 import * as utils from "../utils"
+
 export const Contact = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [msg, setMsg] = useState('')
+    const sendEmail = (e: React.FormEvent<HTMLFormElement>): void => {
+        e.preventDefault()
+        if (!name || !email || !msg) {
+            alert("Preencha todos os campos.")
+            return
+        }
+        const templetParams = {
+            from_name: name,
+            message: msg,
+            email: email,
+        }
 
-    return <div className="">
+        emailjs.send(
+            import.meta.env.VITE_EMAILJS_SERVICE_ID || "",
+            import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "",
+            templetParams,
+            import.meta.env.VITE_EMAILJS_PUBLIC_KEY || ""
+        )
+            .then(result => {
+                alert("Email enviado com sucesso.")
+                setName("")
+                setEmail("")
+                setMsg("")
+                console.log(result)
+            })
+            .catch(err => {
+                alert("Erro ao enviar email.")
+                console.error(err)
+            })
+    }
+
+    return <div>
         <h3
             className="title-section mb-32"
             id="contato"
@@ -108,8 +141,11 @@ export const Contact = () => {
                 </li>
             </ul>
             <div className="hidden md:flex h-80 w-1 bg-primary rounded-lg"></div>
-            <ul className="flex flex-col gap-2 w-full">
-                <li className="flex flex-col gap-2">
+            <form
+                className="flex flex-col gap-2 w-full"
+                onSubmit={sendEmail}
+            >
+                <div className="flex flex-col gap-2">
                     <label className="font-bold">Nome:</label>
                     <input
                         value={name}
@@ -117,8 +153,8 @@ export const Contact = () => {
                         className="border-2 border-gray-300 rounded p-1"
                         onChange={e => setName(e.target.value)}
                     />
-                </li>
-                <li className="flex flex-col gap-2">
+                </div>
+                <div className="flex flex-col gap-2">
                     <label className="font-bold">Email:</label>
                     <input
                         value={email}
@@ -126,22 +162,22 @@ export const Contact = () => {
                         className="border-2 border-gray-300 rounded p-1"
                         onChange={e => setEmail(e.target.value)}
                     />
-                </li>
-                <li className="flex flex-col gap-2">
+                </div>
+                <div className="flex flex-col gap-2">
                     <label className="font-bold">Mensagem:</label>
                     <textarea
                         value={msg}
                         className="border-2 border-gray-300 rounded p-1"
                         onChange={e => setMsg(e.target.value)}
                     />
-                </li>
-                <li>
-                    <Button style="bg-primary text-white hover:underline">
-                        Enviar
-                    </Button>
-                </li>
-            </ul>
+                </div>
+                <Button
+                    style="bg-primary text-white hover:underline">
+                    Enviar
+                </Button>
+            </form>
         </section>
     </div>
 }
+
 
