@@ -1,5 +1,4 @@
 import { useState } from "react"
-
 import { Button } from "./Button"
 
 import * as utils from "../utils"
@@ -53,18 +52,18 @@ export const Contact = () => {
                     </div>
                 </li>
                 <li
-                    className="rounded group flex flex-wrap gap-2 items-center bg-primary p-1 text-white hover:underline cursor-pointer">
+                    className="rounded group flex flex-wrap gap-2 items-center bg-primary p-1 text-white">
                     <span className="p-2 bg-blue-300 rounded-full">
                         <utils.AiOutlineMail />
                     </span>
-                    <h2 className="text-xl">
+                    <h2 className="text-sm md:text-lg">
                         eduardolimadesenvolvedor@gmail.com
                     </h2>
                     <Button
                         onClick={() => {
                             navigator.clipboard.writeText("eduardolimadesenvolvedor@gmail.com")
                         }}
-                        style="bg-white text-primary rounded-lg text-sm hover:underline cursor-pointer"
+                        style="w-fit items-center bg-white text-primary rounded-lg text-sm hover:underline cursor-pointer"
                     >
                         copia email
                     </Button>
@@ -79,9 +78,11 @@ export const Contact = () => {
                         <span className="p-2 bg-sky-500 rounded-full">
                             <utils.AiFillLinkedin />
                         </span>
-                        Eduardo Lima
+                        <h2 className="text-lg group-hover:underline">
+                            Eduardo Lima
+                        </h2>
                         <span
-                            className="animate-pulse text-black bg-white p-1 rounded-lg text-sm hidden w-fit group-hover:flex"
+                            className="text-black bg-white p-1 rounded-lg hidden w-fit "
                         >
                             <utils.BiLinkExternal />
                         </span>
@@ -117,9 +118,9 @@ export const Contact = () => {
                     />
                 </li>
                 <li>
-                    <button type="button" className="bg-primary text-white p-3 rounded">
+                    <Button style="bg-primary text-white hover:underline">
                         Enviar
-                    </button>
+                    </Button>
                 </li>
             </ul>
         </section>
