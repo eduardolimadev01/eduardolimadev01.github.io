@@ -1,27 +1,17 @@
-import * as utils from "../utils"
+import * as utils from "../../utils"
+import supabase from "../../../supabase"
 
-import supabase from "../../supabase"
+import { projectType } from "./projectType"
+
+import { ProjectCard } from "./projectCard"
 
 import {
     useState,
     useEffect
 } from 'react'
 
-type project = {
-    id: string
-    title: string
-    subtitle: string
-    stack: string
-    description: string
-    repository: string
-    demo: string
-    public: boolean
-    img: string
-    created_at: string
-}
-
 export const Projects = () => {
-    const [listProjects, setListProjects] = useState<project[]>([])
+    const [listProjects, setListProjects] = useState<projectType[]>([])
     const initStateProject = {
         id: "",
         title: "",
@@ -34,7 +24,7 @@ export const Projects = () => {
         public: false,
         img: "",
     }
-    const [projectSelected, setProjectSelected] = useState<project>(initStateProject)
+    const [projectSelected, setProjectSelected] = useState<projectType>(initStateProject)
 
     const getProjects = async () => {
         const { data, error } = await supabase()
@@ -47,7 +37,7 @@ export const Projects = () => {
 
     return listProjects.length ?
         <section
-            className="projects mb-32"
+            className="projects mt-20 mb-32"
             id="projetos"
         >
             <h3 className="title-section">Projetos</h3>
@@ -56,31 +46,18 @@ export const Projects = () => {
                     listProjects.map((project) =>
                         project.public ?
                             <li
-                                className="flex flex-col gap-1 justify-center items-center p-1 rounted border-2 border-gray-300 w-full md:w-52 cursor-pointer hover:bg-gray-200"
-                                onClick={() => setProjectSelected(project)}
                                 key={project.title}
                             >
-                                <img
-                                    src={project.img || "/vite.svg"}
-                                    className="w-48 h-48"
+                                <ProjectCard
+                                    project={project}
+                                    setProjectSelected={setProjectSelected}
                                 />
-                                <div className="flex flex-col gap-2 p-1 w-full">
-                                    <h2 className="text-2xl font-bold w-full border-b-2"> {project.title} </h2>
-                                    <h3> {project.subtitle} </h3>
-                                    <ul
-                                        className="flex flex-wrap gap-1"
-                                    >
-                                        {project.stack.split(",").map(item => <li
-                                            key={item}
-                                            className="w-fit px-1 text-sm bg-primary rounded-lg text-white"
-                                        >{item}</li>)}
-                                    </ul>
-                                </div>
                             </li>
                             : null
                     )
                 }
             </ul>
+
             {/* MODAL PROJETO */}
             {
                 projectSelected.title ?

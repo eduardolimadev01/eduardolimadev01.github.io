@@ -6,7 +6,8 @@ export {
     AiOutlineWhatsApp,
     AiOutlineMail,
     AiOutlineClose,
-    AiOutlineMenu
+    AiOutlineMenu,
+    AiOutlineSearch
 } from "react-icons/ai"
 export {
     GrContactInfo

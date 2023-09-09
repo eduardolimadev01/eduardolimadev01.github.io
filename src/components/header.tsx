@@ -9,7 +9,7 @@ export const Header = () => {
     ]
     const [showMenu, setShowMenu] = useState(false)
     return <header
-        className="fixed w-full bg-primary shadow-md"
+        className="fixed z-20 w-full bg-primary shadow-md"
     >
         <div className="mx-auto sm:w-[1000px] w-full flex container">
             <div className="flex flex-col md:flex-row justify-between bg-primary text-white items-center w-full px-2">
