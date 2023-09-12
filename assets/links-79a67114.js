@@ -1,0 +1,1 @@
+import{c as t,j as e,R as r}from"./style-4fd43d7f.js";const n=()=>e.jsx("div",{className:"",children:"link2"});t.createRoot(document.getElementById("root")).render(e.jsx(r.StrictMode,{children:e.jsx(n,{})}));
