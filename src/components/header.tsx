@@ -5,6 +5,7 @@ export const Header = () => {
     const listMenu = [
         "home",
         "projetos",
+        "sobre",
         "contato",
     ]
     const [showMenu, setShowMenu] = useState(false)

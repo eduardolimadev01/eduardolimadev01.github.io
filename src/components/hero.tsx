@@ -15,7 +15,7 @@ export const Hero = () => {
     ]
 
     return <section
-        className="flex flex-col justify-center items-center hero border-b-2 h-80 w-full px-2"
+        className="flex flex-col justify-center items-center h-80 w-full px-2"
         id="home"
     >
         <h2 className="text-4xl">Desenvolvedor Web Front-End</h2>

@@ -12,29 +12,10 @@ export const ProjectCard = ({
     }
 ) => {
 
-    //     <section
-    //     className="flex flex-col gap-1 p-1 rounted border-2 border-gray-300 w-full md:w-64"
-    // >
-    //     <div
-    //         className="cursor-pointer hover:bg-gray-100 relative">
-    //         <div className="flex justify-center mb-4">
-    //             <img
-    //                 src={project.img || "/vite.svg"}
-    //                 className="w-48 h-48"
-    //             />
-    //         </div>
-    //         <div className="flex flex-col gap-2 p-1 w-full">
-    //             <h2 className="text-2xl font-bold w-full border-b-2">  </h2>
-    //         </div>
-    //         <span className="absolute p-2 top-2 right-2 bg-white border-2 rounded-lg">
-    //             <utils.AiOutlineSearch />
-    //         </span>
-    //     </div>
-    // </section>
     return <article className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg shadow">
         <div
             onClick={() => setProjectSelected(project)}
-            className="cursor-pointer hover:bg-gray-100"
+            className="cursor-pointer hover:bg-gray-100 relative"
         >
             <img
                 className="lg:h-48 md:h-36 w-full object-cover object-center"
@@ -57,15 +38,25 @@ export const ProjectCard = ({
                     {project.subtitle}
                 </p>
             </div>
+            <span className="absolute top-3 right-3 bg-white p-2 rounded-full">
+                <utils.AiOutlineSearch />
+            </span>
         </div>
-        <a
-            target="_blank"
-            rel="noreferrer"
-            className="w-full flex items-center gap-2 underline text-sky-600 p-3 hover:bg-gray-100" 
-            href={project.demo}
-        >
-            Link do Projeto
-            <utils.BiLinkExternal />
-        </a>
+        <div className="flex items-center justify-between">
+            <a
+                target="_blank"
+                rel="noreferrer"
+                className="w-full flex items-center gap-2 underline text-sky-600 p-3 hover:bg-gray-100"
+                href={project.demo}
+            >
+                Link do Projeto
+                <utils.BiLinkExternal />
+            </a>
+            {!project.production ? <span
+                className="flex h-fit text-[11px] rounded-xl bg-blue-400 text-white uppercase px-1"
+            >
+                em_desenvolvimento
+            </span> : null}
+        </div>
     </article>
 }

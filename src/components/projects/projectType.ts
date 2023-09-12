@@ -7,6 +7,7 @@ export type projectType = {
     repository: string
     demo: string
     public: boolean
+    production: boolean
     img: string
     created_at: string
 }
